@@ -1,0 +1,14 @@
+
+.search-bar{
+  /*width: 50%;*/
+  margin: 15px;
+  align-items:center;
+}
+
+.search-bar-input{
+  width: 70% !important;
+}
+
+.button{
+  width: 8%;
+}
