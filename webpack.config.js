@@ -5,8 +5,7 @@ module.exports = {
   entry: './app/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/'
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -14,5 +13,9 @@ module.exports = {
       { test: /\.css$/, use: [ 'style-loader', 'css-loader' ]}
     ]
   },
-  plugins: [new HtmlWebpackPlugin({template: 'app/index.html'})]
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'app/index.html'
+    })
+  ]
 }
