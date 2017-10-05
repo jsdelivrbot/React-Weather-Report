@@ -4,6 +4,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'R
 
 class CityList extends Component{
   render(){
+    const weatherDataObj = this.props.weatherDataObj;
     return (
       <div>
         <table className='table'>
@@ -17,7 +18,7 @@ class CityList extends Component{
             </tr>
           </thead>
           <tbody>
-            {this.props.weatherDataArray.map(weatherData => <WeatherDataRows key = {weatherData.city} weatherData={weatherData}/>)}
+            {Object.keys(weatherDataObj).map(city => <WeatherDataRows key={city} cityName={city} weatherData={weatherDataObj[city]}/>)}
           </tbody>
         </table>
       </div>
@@ -29,7 +30,7 @@ function WeatherDataRows(props){
   const weatherData = props.weatherData;
     return (
       <tr>
-        <td>{weatherData.city}</td>
+        <td>{props.cityName}</td>
         <td><Chart data={weatherData.highTemps}/></td>
         <td><Chart data={weatherData.lowTemps}/></td>
         <td><Chart data={weatherData.humidity}/></td>
@@ -49,7 +50,7 @@ function Chart(props){
 
 function mapStateToProps(state){
   return {
-    weatherDataArray: state.weatherData
+    weatherDataObj: state.weatherData
   };
 }
 export default connect(mapStateToProps)(CityList);
