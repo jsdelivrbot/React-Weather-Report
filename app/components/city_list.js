@@ -17,7 +17,7 @@ class CityList extends Component{
             </tr>
           </thead>
           <tbody>
-            {this.props.weatherDataArray.map(weatherData => <WeatherDataRows weatherData={weatherData}/>)}
+            {this.props.weatherDataArray.map(weatherData => <WeatherDataRows key = {weatherData.city} weatherData={weatherData}/>)}
           </tbody>
         </table>
       </div>
@@ -28,7 +28,7 @@ class CityList extends Component{
 function WeatherDataRows(props){
   const weatherData = props.weatherData;
     return (
-      <tr key = {weatherData.city}>
+      <tr>
         <td>{weatherData.city}</td>
         <td><Chart data={weatherData.highTemps}/></td>
         <td><Chart data={weatherData.lowTemps}/></td>

@@ -7,7 +7,7 @@ export default function(state=[], action){
       const humidity = forcastArray.map(forecast => { return {value: forecast.avehumidity}});
       const maxWind = forcastArray.map(forecast => { return {value: forecast.maxwind.mph}});
       var weatherData = {city: action.cityName, highTemps, lowTemps, humidity, maxWind};
-      return state.concat(weatherData);
+      return [weatherData, ...state];
     default:
       return state;
   }
